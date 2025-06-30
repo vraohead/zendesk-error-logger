@@ -1,6 +1,9 @@
 {
   "name": "Error Logger",
-  "author": "vraohead",
+  "author": {
+    "name": "Your Name",
+    "email": "your@email.com"
+  },
   "defaultLocale": "en",
   "private": true,
   "version": "1.0",
