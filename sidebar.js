@@ -17,16 +17,20 @@ document.getElementById('error-form').addEventListener('submit', async function(
     data.submittedBy = user.currentUser.name;
     data.userId = user.currentUser.id;
 
-    await client.request({
-      url: SCRIPT_URL,
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(data)
+    const response = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
 
+    const text = await response.text();
     form.reset();
-    document.getElementById('status').textContent = '✅ Logged successfully!';
+    document.getElementById('status').textContent = '✅ ' + text;
+    console.log('✅ Google Script Response:', text);
   } catch (err) {
     document.getElementById('status').textContent = '❌ Error: ' + err.message;
+    console.error('❌ Google Script Error:', err);
   }
 });
