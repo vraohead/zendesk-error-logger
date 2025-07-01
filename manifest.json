@@ -1,8 +1,8 @@
 {
-  "name": "Error Logger",
+  "name": "RO Error Logger",
   "author": {
-    "name": "Your Name",
-    "email": "your@email.com"
+    "name": "vraohead",
+    "email": "you@example.com"
   },
   "defaultLocale": "en",
   "private": true,
@@ -11,10 +11,13 @@
   "location": {
     "support": {
       "ticket_sidebar": {
-        "url": "https://vraohead.github.io/zendesk-error-logger/sidebar.html",
-        "name": "Log RO Error"
+        "url": "sidebar.html",
+        "name": "RO Error Logger"
       }
     }
   },
-  "singleInstall": true
+  "singleInstall": true,
+  "assets": {
+    "icon": "assets/logo.svg"
+  }
 }
