@@ -16,5 +16,8 @@
       }
     }
   },
-  "singleInstall": true
+  "singleInstall": true,
+  "assets": {
+    "icon": "assets/logo.png"
+  }
 }
