@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>RO Error Logger</title>
   <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       padding: 20px;
-      min-height: 500px;
+      min-height: 580px; /* 🔥 Fit everything in default Zendesk sidebar */
       box-sizing: border-box;
     }
 
     h1 {
       font-size: 20px;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    h1 img {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
     }
 
     label {
@@ -54,7 +62,10 @@
   </style>
 </head>
 <body>
-  <h1>RO Error Logger</h1>
+  <h1>
+    <img src="assets/logo.png" alt="Logo" />
+    RO Error Logger
+  </h1>
 
   <form id="error-form">
     <label for="bid">BID</label>
@@ -78,4 +89,17 @@
       <option value="others">Others</option>
     </select>
 
-    <label for="description">Description</l
+    <label for="description">Description</label>
+    <textarea name="description" id="description" rows="3"></textarea>
+
+    <label for="error_done_by">Error Done By</label>
+    <input name="error_done_by" id="error_done_by" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="status"></div>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>
