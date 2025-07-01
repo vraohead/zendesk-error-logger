@@ -1,6 +1,4 @@
 const client = ZAFClient.init();
-
-// 👇 This is your new PROXY endpoint
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMejEdgeSTo5OJL4YES7zXbjdoakvNcs_EM_H_TnJYnEsruYg31zNaRGZVu8WRHsXIWA/exec';
 
 document.getElementById('error-form').addEventListener('submit', async function(e) {
@@ -19,7 +17,6 @@ document.getElementById('error-form').addEventListener('submit', async function(
     data.submittedBy = user.currentUser.name;
     data.userId = user.currentUser.id;
 
-    // ✅ This uses Zendesk’s secure client.request method (no CORS issues)
     await client.request({
       url: SCRIPT_URL,
       type: 'POST',
