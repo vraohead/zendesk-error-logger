@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Log RO Error</title>
+  <meta charset="utf-8" />
+  <title>RO Error Logger</title>
   <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <style>
-    body { font-family: sans-serif; padding: 15px; }
-    label { display: block; margin-top: 10px; }
-    input, select, textarea { width: 100%; margin-bottom: 10px; padding: 6px; }
-    button { padding: 8px 12px; font-weight: bold; width: 100%; }
-    #status { margin-top: 10px; font-size: 0.9em; color: green; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      min-height: 500px;
+      max-height: 100%;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    h1 img {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 4px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 14px;
+      width: 100%;
+      background-color: #0052cc;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #003f9a;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
-  <h2>Log RO Error</h2>
+  <h1>
+    <img src="assets/logo.svg" alt="Logo" />
+    RO Error Logger
+  </h1>
+
   <form id="error-form">
     <label for="bid">BID</label>
-    <input name="bid" required />
+    <input name="bid" id="bid" required />
 
     <label for="error_type">Error Type</label>
-    <select name="error_type" required>
+    <select name="error_type" id="error_type" required>
       <option value="">— select —</option>
       <option value="manual_error">Manual error</option>
       <option value="no_bi">Did not follow BI</option>
@@ -37,13 +91,14 @@
     </select>
 
     <label for="description">Description</label>
-    <textarea name="description" rows="3"></textarea>
+    <textarea name="description" id="description" rows="3"></textarea>
 
     <label for="error_done_by">Error Done By</label>
-    <input name="error_done_by" required />
+    <input name="error_done_by" id="error_done_by" required />
 
     <button type="submit">Submit</button>
   </form>
+
   <div id="status"></div>
 
   <script src="sidebar.js"></script>
