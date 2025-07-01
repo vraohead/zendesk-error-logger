@@ -1,23 +1,2 @@
-{
-  "name": "RO Error Logger",
-  "author": {
-    "name": "vraohead",
-    "email": "you@example.com"
-  },
-  "defaultLocale": "en",
-  "private": true,
-  "version": "1.0",
-  "frameworkVersion": "2.0",
-  "location": {
-    "support": {
-      "ticket_sidebar": {
-        "url": "sidebar.html",
-        "name": "RO Error Logger"
-      }
-    }
-  },
-  "singleInstall": true,
-  "assets": {
-    "icon": "assets/logo.png"
-  }
-}
+Upload Error
+sidebar.html is either an invalid location URI, refers to a missing asset, or does not use HTTPS.
