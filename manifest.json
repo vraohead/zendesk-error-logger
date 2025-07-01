@@ -11,7 +11,7 @@
   "location": {
     "support": {
       "ticket_sidebar": {
-        "url": "sidebar.html",
+        "url": "https://vraohead.github.io/zendesk-error-logger/sidebar.html",
         "name": "RO Error Logger"
       }
     }
