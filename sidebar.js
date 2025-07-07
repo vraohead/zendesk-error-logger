@@ -4,11 +4,14 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMejEdgeSTo5OJL4YES
 document.getElementById('error-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const form = e.target;
+  const status = document.getElementById('status');
+  status.style.display = 'none';
+  status.style.color = 'green';
 
   const data = {
-    bid: form.bid.value,
+    bid: form.bid.value.trim(),
     error_type: form.error_type.value,
-    description: form.description.value,
+    description: form.description.value.trim(),
     error_done_by: form.error_done_by.value
   };
 
@@ -25,9 +28,21 @@ document.getElementById('error-form').addEventListener('submit', async function(
     });
 
     form.reset();
-    document.getElementById('status').textContent = '✅ Logged successfully!';
+    status.textContent = '✅ Submission logged successfully.';
+    status.style.display = 'block';
+
+    setTimeout(() => {
+      status.style.display = 'none';
+    }, 3000);
   } catch (err) {
-    document.getElementById('status').textContent = '❌ Error: ' + err.message;
-    console.error('Zendesk log failed:', err);
+    console.error('Submission error:', err);
+    status.style.color = 'red';
+    status.textContent = '❌ Something went wrong. Please try again.';
+    status.style.display = 'block';
+
+    setTimeout(() => {
+      status.style.display = 'none';
+      status.style.color = 'green';
+    }, 4000);
   }
 });
