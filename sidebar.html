@@ -5,38 +5,25 @@
   <title>RO Error Logger</title>
   <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       padding: 24px;
       background: #fff;
       color: #111;
-      min-height: 600px;
+      min-height: 620px;
       margin: 0;
     }
-
     h1 {
       font-size: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
     }
-
-    h1 img {
-      height: 20px;
-      margin-right: 10px;
-    }
-
     label {
       display: block;
       font-weight: 500;
       margin: 14px 0 6px;
     }
-
     input, select, textarea {
       width: 100%;
       padding: 10px;
@@ -45,12 +32,10 @@
       font-size: 14px;
       transition: border 0.2s;
     }
-
     input:focus, select:focus, textarea:focus {
       border-color: #0052cc;
       outline: none;
     }
-
     button {
       margin-top: 20px;
       padding: 12px 16px;
@@ -63,11 +48,9 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #003f9a;
     }
-
     #status {
       margin-top: 12px;
       font-size: 13px;
@@ -75,94 +58,45 @@
       color: green;
       display: none;
     }
+    .radio-group {
+      margin-bottom: 16px;
+    }
+    .radio-group label {
+      display: inline-block;
+      margin-right: 20px;
+      font-weight: 600;
+    }
+    .note {
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
   </style>
 </head>
 <body>
-  <h1>
-    <img src="assets/logo.png" alt="Logo" />
-    RO Error Logger
-  </h1>
+  <h1>RO Error Logger</h1>
 
   <form id="error-form">
+    <div class="radio-group">
+      <label><input type="radio" name="team" value="RO" checked> RO</label>
+      <label><input type="radio" name="team" value="CE"> CE</label>
+    </div>
+
     <label for="bid">BID</label>
     <input name="bid" id="bid" required />
 
     <label for="error_type">Error Type</label>
-    <select name="error_type" id="error_type" required>
-      <option value="">— select —</option>
-      <option value="manual_error">Manual error</option>
-      <option value="no_bi">Did not follow BI</option>
-      <option value="wrong_alts">Wrong Alts sent</option>
-      <option value="wrong_refund">Wrong refund</option>
-      <option value="wrong_macro">Wrong macro</option>
-      <option value="wrong_tickets">Wrong tickets</option>
-      <option value="double_booking">Double booking</option>
-      <option value="incomplete_ff">Incomplete FF</option>
-      <option value="no_sop">No SOP</option>
-      <option value="improper_action">Improper action</option>
-      <option value="ro_tat">RO TAT</option>
-      <option value="wrong_dss">Wrong DSS</option>
-      <option value="others">Others</option>
-    </select>
+    <select name="error_type" id="error_type" required></select>
 
     <label for="description">Description</label>
     <textarea name="description" id="description" rows="3"></textarea>
 
     <label for="error_done_by">Error Done By</label>
-    <select name="error_done_by" id="error_done_by" required>
-      <option value="">— select —</option>
-      <option value="Aacim Zia">Aacim Zia</option>
-      <option value="Aayushi Kanjilal">Aayushi Kanjilal</option>
-      <option value="Abhay Singh">Abhay Singh</option>
-      <option value="Akshay Chandrahas">Akshay Chandrahas</option>
-      <option value="Akshita Saikia">Akshita Saikia</option>
-      <option value="Ankita Singh">Ankita Singh</option>
-      <option value="Ankit Mishra">Ankit Mishra</option>
-      <option value="Arun Pratap Singh">Arun Pratap Singh</option>
-      <option value="Arunish Kumar Parashar">Arunish Kumar Parashar</option>
-      <option value="Ashish Kumar">Ashish Kumar</option>
-      <option value="Ayush Shukla">Ayush Shukla</option>
-      <option value="Charan Shetti">Charan Shetti</option>
-      <option value="Chetan Bhaskar">Chetan Bhaskar</option>
-      <option value="Devyani Parihar">Devyani Parihar</option>
-      <option value="Dharani Dharan">Dharani Dharan</option>
-      <option value="Firdous Tabassum">Firdous Tabassum</option>
-      <option value="Giridharan Srinivasan">Giridharan Srinivasan</option>
-      <option value="Govind D">Govind D</option>
-      <option value="Himanshu Dwivedi">Himanshu Dwivedi</option>
-      <option value="Jyoti Jaiswal">Jyoti Jaiswal</option>
-      <option value="Kriti Singh">Kriti Singh</option>
-      <option value="Madhubalan G">Madhubalan G</option>
-      <option value="Manisha Lakhani">Manisha Lakhani</option>
-      <option value="Mariya Murtaza">Mariya Murtaza</option>
-      <option value="Mervin Vineeth S">Mervin Vineeth S</option>
-      <option value="Monalisa Sharma">Monalisa Sharma</option>
-      <option value="Mousumi Maity">Mousumi Maity</option>
-      <option value="Mudit Somani">Mudit Somani</option>
-      <option value="Mohamed Rizwan">Mohamed Rizwan</option>
-      <option value="Nandita Ambwani">Nandita Ambwani</option>
-      <option value="Niharika Basavaraj">Niharika Basavaraj</option>
-      <option value="Poushali Choudhury">Poushali Choudhury</option>
-      <option value="Pranjali Dhongde">Pranjali Dhongde</option>
-      <option value="Rishabh Saraf">Rishabh Saraf</option>
-      <option value="Rithik Lobo">Rithik Lobo</option>
-      <option value="Rohan Thakur">Rohan Thakur</option>
-      <option value="Sai Vamsi">Sai Vamsi</option>
-      <option value="Saarth Soparkar">Saarth Soparkar</option>
-      <option value="Saroj Sapkota">Saroj Sapkota</option>
-      <option value="Sarthak Gedam">Sarthak Gedam</option>
-      <option value="Sarthak Mishra">Sarthak Mishra</option>
-      <option value="Sonal Jaiswal">Sonal Jaiswal</option>
-      <option value="Stefy Yohannan">Stefy Yohannan</option>
-      <option value="Steve Varghese">Steve Varghese</option>
-      <option value="Sujan A B">Sujan A B</option>
-      <option value="Surabhi Detani">Surabhi Detani</option>
-      <option value="Suvashis Kundu">Suvashis Kundu</option>
-      <option value="Vaishali Bisht">Vaishali Bisht</option>
-      <option value="Other">Other (Please inform RO QA Team)</option>
-    </select>
+    <select name="error_done_by" id="error_done_by" required></select>
 
     <button type="submit">Submit</button>
+    <p class="note">Please wait up to 5 seconds after clicking Submit to see confirmation.</p>
+
     <div id="status">✅ Submission logged successfully.</div>
   </form>
 
