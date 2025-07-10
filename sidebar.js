@@ -1,10 +1,14 @@
 const client = ZAFClient.init();
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMejEdgeSTo5OJL4YES7zXbjdoakvNcs_EM_H_TnJYnEsruYg31zNaRGZVu8WRHsXIWA/exec';
 
-const errorTypeDropdown = document.getElementById('error_type');
-const nameDropdown = document.getElementById('error_done_by');
+// ✅ Your live Apps Script URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMejEdgeSTo5OJL4YES7zXbjdoakvNcs_EM_H_TnJYnEsruYg31zNaRGZVu8WRHsXIWA/exec";
+
+// Elements
+const errorTypeDropdown = document.getElementById("error_type");
+const nameDropdown = document.getElementById("error_done_by");
 const teamRadios = document.querySelectorAll('input[name="team"]');
 
+// Options
 const roErrorTypes = [
   "Manual error", "Did not follow BI", "Wrong Alts sent", "Wrong refund",
   "Wrong macro", "Wrong tickets", "Double booking", "Incomplete FF",
@@ -21,37 +25,14 @@ const ceErrorTypes = [
   "Lack of explanation", "Raised a CE ping instead of self action"
 ];
 
-const roNames = [
-  "Aacim Zia", "Aayushi Kanjilal", "Abhay Singh", "Akshay Chandrahas", "Akshita Saikia",
-  "Ankita Singh", "Ankit Mishra", "Arun Pratap Singh", "Arunish Kumar Parashar",
-  "Ashish Kumar", "Ayush Shukla", "Charan Shetti", "Chetan Bhaskar", "Devyani Parihar",
-  "Dharani Dharan", "Firdous Tabassum", "Giridharan Srinivasan", "Govind D",
-  "Himanshu Dwivedi", "Jyoti Jaiswal", "Kriti Singh", "Madhubalan G", "Manisha Lakhani",
-  "Mariya Murtaza", "Mervin Vineeth S", "Monalisa Sharma", "Mousumi Maity",
-  "Mudit Somani", "Mohamed Rizwan", "Nandita Ambwani", "Niharika Basavaraj",
-  "Poushali Choudhury", "Pranjali Dhongde", "Rishabh Saraf", "Rithik Lobo",
-  "Rohan Thakur", "Sai Vamsi", "Saarth Soparkar", "Saroj Sapkota", "Sarthak Gedam",
-  "Sarthak Mishra", "Sonal Jaiswal", "Stefy Yohannan", "Steve Varghese", "Sujan A B",
-  "Surabhi Detani", "Suvashis Kundu", "Vaishali Bisht", "Other (Please inform RO QA Team)"
-];
+const roNames = [ "Aacim Zia", "Aayushi Kanjilal", "Abhay Singh", /* ... */, "Other (Please inform RO QA Team)" ];
+const ceNames = [ "Abhinav Mishra", "Abhinav Nair", "Aishwarya M S", /* ... */, "Other (Please inform RO QA Team)" ];
 
-const ceNames = [
-  "Abhinav Mishra", "Abhinav Nair", "Aishwarya M S", "Akash Asija", "Aleena John",
-  "Aliya Mehar", "Amey Sathe", "Amanda Liza Dympep", "Amulya Chimaniya", "Anamika Kumari",
-  "Animesh Mohan", "Anisha Maben", "Ashpreet Kaur", "Banupriya S", "Bhumika Shinde",
-  "Blesson Paul", "Denzil Dsilva", "Ishanava Bhadury", "Jay Sanjay Mogare", "Job Mathew",
-  "Khushi Chopra", "Kritika Murpana", "Mallika More", "Manasi Rao", "Mummidi Mounika",
-  "Nahdha Shakkeer", "Nikita Susan D Cunha", "Nithin Bharath Kumar", "Parneet Randhawa",
-  "Prakrati Choudhary", "Praseetha Padmanaban", "Risalan Shullai", "Rohan Thakur",
-  "Sahana Bhushan", "Sahil Kumar", "Sameer Bhalerao", "Sampath Majaw", "Sanjana Gurung",
-  "Saptaparna Chatterjee", "Sathvikesh R", "Shaan G", "Shreyas G", "Shruti Pandey",
-  "Simran Shaw", "Simrandeep Kaur", "Vanshika Ahuja", "Other (Please inform RO QA Team)"
-];
-
+// Update dropdowns based on selected team
 function populateOptions(dropdown, options) {
   dropdown.innerHTML = '<option value="">— select —</option>';
-  options.forEach(name => {
-    dropdown.innerHTML += `<option value="${name}">${name}</option>`;
+  options.forEach(opt => {
+    dropdown.innerHTML += `<option value="${opt}">${opt}</option>`;
   });
 }
 
@@ -67,23 +48,24 @@ function updateTeamOptions() {
 }
 
 teamRadios.forEach(radio => {
-  radio.addEventListener('change', updateTeamOptions);
+  radio.addEventListener("change", updateTeamOptions);
 });
 
-updateTeamOptions(); // initialize on load
+updateTeamOptions(); // Initialize on load
 
-// Submission handler
-document.getElementById('error-form').addEventListener('submit', async function(e) {
+// Handle form submit
+document.getElementById("error-form").addEventListener("submit", async function (e) {
   e.preventDefault();
   const form = e.target;
-  const status = document.getElementById('status');
-  status.style.display = 'none';
-  status.style.color = 'green';
+  const status = document.getElementById("status");
+  status.style.display = "none";
+  status.style.color = "green";
 
+  // ✅ GET SELECTED TEAM
   const team = document.querySelector('input[name="team"]:checked').value;
 
   const data = {
-    team,
+    team: team, // ✅ INCLUDE TEAM VALUE HERE
     bid: form.bid.value.trim(),
     error_type: form.error_type.value,
     description: form.description.value.trim(),
@@ -91,34 +73,34 @@ document.getElementById('error-form').addEventListener('submit', async function(
   };
 
   try {
-    const user = await client.get('currentUser');
+    const user = await client.get("currentUser");
     data.submittedBy = user.currentUser.name;
     data.userId = user.currentUser.id;
 
     await client.request({
       url: SCRIPT_URL,
-      type: 'POST',
-      contentType: 'application/json',
+      type: "POST",
+      contentType: "application/json",
       data: JSON.stringify(data)
     });
 
     form.reset();
     updateTeamOptions();
-    status.textContent = '✅ Submission logged successfully.';
-    status.style.display = 'block';
+    status.textContent = "✅ Submission logged successfully.";
+    status.style.display = "block";
 
     setTimeout(() => {
-      status.style.display = 'none';
+      status.style.display = "none";
     }, 3000);
   } catch (err) {
-    console.error('Submission error:', err);
-    status.textContent = '❌ Submission failed. Please try again.';
-    status.style.color = 'red';
-    status.style.display = 'block';
+    console.error("Submission error:", err);
+    status.textContent = "❌ Submission failed. Please try again.";
+    status.style.color = "red";
+    status.style.display = "block";
 
     setTimeout(() => {
-      status.style.display = 'none';
-      status.style.color = 'green';
+      status.style.display = "none";
+      status.style.color = "green";
     }, 4000);
   }
 });
