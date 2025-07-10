@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>COErrorLogger</title>
   <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
   <style>
@@ -12,7 +12,7 @@
       background: #fff;
       color: #111;
       margin: 0;
-      min-height: 560px;
+      min-height: 580px;
       overflow-y: auto;
     }
     h1 {
@@ -47,14 +47,6 @@
     button:hover {
       background-color: #003f9a;
     }
-    .radio-group {
-      margin: 12px 0 8px;
-    }
-    .radio-group label {
-      display: inline-block;
-      margin-right: 12px;
-      font-size: 13px;
-    }
     .note {
       font-size: 11px;
       color: #777;
@@ -73,10 +65,11 @@
   <h1>CO Error Logger</h1>
 
   <form id="error-form">
-    <div class="radio-group">
-      <label><input type="radio" name="team" value="RO" checked> RO</label>
-      <label><input type="radio" name="team" value="CE"> CE</label>
-    </div>
+    <label for="team">Team</label>
+    <select id="team" name="team" required>
+      <option value="RO">RO</option>
+      <option value="CE">CE</option>
+    </select>
 
     <label for="bid">BID</label>
     <input name="bid" id="bid" required />
