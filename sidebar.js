@@ -33,7 +33,7 @@ const roNames = [
   "Suvashis Kundu", "Vaishali Bisht", "Nandita Ambwani", "Pranjali Dhongde", "Kriti Singh",
   "Akshita Saikia", "Arun Pratap Singh", "Chetan Bhaskar", "Firdous Tabassum", "Govind D",
   "Jyoti Jaiswal", "Sai Vamsi", "Mousumi Maity", "Akshay Chandrahas", "Devyani Parihar",
-  "Dharani Dharan", "Madhubalan G", "Monalisa Sharma", "Other (Please inform RO QA Team)"
+  "Dharani Dharan", "Madhubalan G", "Monalisa Sharma","Rohan Thakur", "Other (Please inform RO QA Team)"
 ];
 
 // CE Names
@@ -46,7 +46,7 @@ const ceNames = [
   "Sameer Bhalerao", "Sathvikesh R", "Abhinav Mishra", "Amanda Liza Dympep", "Banupriya S", "Risalan Shullai",
   "Alexis Majaw", "Ashpreet Kaur", "Omair Athar Danyal", "Job Mathew", "Nahdha Shakkeer", "Nikita Susan D Cunha",
   "Sanvi Mishra", "Akash Asija", "Anamika Kumari", "Anisha Maben", "Sahana Bhushan", "Mohit Kumar",
-  "Sahil Kumar", "Sanjana Gurung", "Shreyas G", "Shruti Pandey", "Rohan Thakur", "Other (Please inform RO QA Team)"
+  "Sahil Kumar", "Sanjana Gurung", "Shreyas G", "Shruti Pandey", "Other (Please inform CE QA Team)"
 ];
 
 function populateDropdown(dropdown, options) {
