@@ -1,5 +1,8 @@
 const client = ZAFClient.init();
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzecRizo1W7MqfIbHdbNXoGAiEVrNjmWSh6I3DYs9TB7l9PIYWHnUxOI0BUUro7R0rqcA/exec";
+
+// ✅ Separate Script URLs for RO and CE
+const SCRIPT_URL_RO = "https://script.google.com/macros/s/AKfycbzecRizo1W7MqfIbHdbNXoGAiEVrNjmWSh6I3DYs9TB7l9PIYWHnUxOI0BUUro7R0rqcA/exec";
+const SCRIPT_URL_CE = "https://script.google.com/macros/s/AKfycbxveriphRqZD10UmOQhPz056pUpHl3vJozPgR1TTVDxISrxcDU2yad1gkCPvh-zwb91nw/exec";
 
 // Dropdowns
 const teamDropdown = document.getElementById("team");
@@ -14,14 +17,11 @@ const roErrorTypes = [
 ];
 
 const ceErrorTypes = [
-  "Wrong Information shared",
-  "Failed to raise the guest issue with the necessary team.",
-  "Did not action callback/follow up/e-mail as per the requirement.",
-  "Did not add follow up tag", "No response/inactivity", "other issues",
-  "Delayed response to the CX", "Lack of product/service knowledge",
-  "Did not follow closing protocol/ force closed", "Did not follow SOP correctly",
-  "Did not use DSS/ used incorrect DSS", "Requested incorrect ETA",
-  "Lack of explanation", "Raised a CE ping instead of self action"
+  "Wrong Information shared", "Failed to raise the guest issue with the necessary team.",
+  "Did not action callback/follow up/e-mail as per the requirement.", "Did not add follow up tag",
+  "No response/inactivity", "other issues", "Delayed response to the CX", "Lack of product/service knowledge",
+  "Did not follow closing protocol/ force closed", "Did not follow SOP correctly", "Did not use DSS/ used incorrect DSS",
+  "Requested incorrect ETA", "Lack of explanation", "Raised a CE ping instead of self action"
 ];
 
 // RO Names
@@ -30,30 +30,25 @@ const roNames = [
   "Surabhi Detani", "Ankita Singh", "Sarthak Gedam", "Sarthak Mishra", "Saroj Sapkota",
   "Himanshu Dwivedi", "Poushali Choudhury", "Mudit Somani", "Sujan A B", "Rishabh Saraf",
   "Mohamed Rizwan", "Ashish Kumar", "Sonal Jaiswal", "Charan Shetti", "Stefy Yohannan",
-  "Suvashis Kundu", "Vaishali Bisht", "Nandita Ambwani", "Abhay Singh", "Pranjali Dhongde",
-  "Kriti Singh", "Akshita Saikia", "Arun Pratap Singh", "Chetan Bhaskar", "Firdous Tabassum",
-  "Govind D", "Jyoti Jaiswal", "Sai Vamsi", "Mousumi Maity", "Akshay Chandrahas",
-  "Devyani Parihar", "Dharani Dharan", "Madhubalan G", "Monalisa Sharma",
-  "Other (Please inform RO QA Team)"
+  "Suvashis Kundu", "Vaishali Bisht", "Nandita Ambwani", "Pranjali Dhongde", "Kriti Singh",
+  "Akshita Saikia", "Arun Pratap Singh", "Chetan Bhaskar", "Firdous Tabassum", "Govind D",
+  "Jyoti Jaiswal", "Sai Vamsi", "Mousumi Maity", "Akshay Chandrahas", "Devyani Parihar",
+  "Dharani Dharan", "Madhubalan G", "Monalisa Sharma", "Other (Please inform RO QA Team)"
 ];
 
 // CE Names
 const ceNames = [
-  "Ishanava Bhadury", "Animesh Mohan", "Kritika Murpana", "Mummidi Mounika",
-  "Bhumika Shinde", "Prakrati Choudhary", "Shubham Kumar Singh", "Simran Shaw",
-  "Amey Sathe", "Jay Sanjay Mogare", "Aishwarya M S", "Amulya Chimaniya",
-  "Parneet Randhawa", "Praseetha Padmanaban", "Saptaparna Chatterjee", "Vanshika Ahuja",
-  "Blesson Paul", "Simrandeep Kaur", "Abhinav Nair", "Aleena John", "Aliya Mehar",
-  "Denzil Dsilva", "Khushi Chopra", "Mallika More", "Manasi Rao", "Monalisa Das",
-  "Nithin Bharath Kumar", "Sameer Bhalerao", "Sathvikesh R", "Abhinav Mishra",
-  "Amanda Liza Dympep", "Banupriya S", "Risalan Shullai", "Alexis Majaw", "Ashpreet Kaur",
-  "Omair Athar Danyal", "Job Mathew", "Nahdha Shakkeer", "Nikita Susan D Cunha",
-  "Sanvi Mishra", "Akash Asija", "Anamika Kumari", "Anisha Maben", "Sahana Bhushan",
-  "Mohit Kumar", "Sahil Kumar", "Sanjana Gurung", "Shreyas G", "Shruti Pandey",
-  "Rohan Thakur", "Other (Please inform RO QA Team)"
+  "Ishanava Bhadury", "Animesh Mohan", "Kritika Murpana", "Mummidi Mounika", "Bhumika Shinde",
+  "Prakrati Choudhary", "Shubham Kumar Singh", "Simran Shaw", "Amey Sathe", "Jay Sanjay Mogare",
+  "Aishwarya M S", "Amulya Chimaniya", "Parneet Randhawa", "Praseetha Padmanaban", "Saptaparna Chatterjee",
+  "Vanshika Ahuja", "Blesson Paul", "Simrandeep Kaur", "Abhinav Nair", "Aleena John", "Aliya Mehar",
+  "Denzil Dsilva", "Khushi Chopra", "Mallika More", "Manasi Rao", "Monalisa Das", "Nithin Bharath Kumar",
+  "Sameer Bhalerao", "Sathvikesh R", "Abhinav Mishra", "Amanda Liza Dympep", "Banupriya S", "Risalan Shullai",
+  "Alexis Majaw", "Ashpreet Kaur", "Omair Athar Danyal", "Job Mathew", "Nahdha Shakkeer", "Nikita Susan D Cunha",
+  "Sanvi Mishra", "Akash Asija", "Anamika Kumari", "Anisha Maben", "Sahana Bhushan", "Mohit Kumar",
+  "Sahil Kumar", "Sanjana Gurung", "Shreyas G", "Shruti Pandey", "Rohan Thakur", "Other (Please inform RO QA Team)"
 ];
 
-// Utility
 function populateDropdown(dropdown, options) {
   dropdown.innerHTML = '<option value="">— select —</option>';
   options.forEach(option => {
@@ -71,16 +66,13 @@ function updateOptionsForTeam(team) {
   }
 }
 
-// On Team Dropdown Change
 teamDropdown.addEventListener("change", () => {
   const selectedTeam = teamDropdown.value;
   updateOptionsForTeam(selectedTeam);
 });
 
-// Initial load
-updateOptionsForTeam(teamDropdown.value);
+updateOptionsForTeam(teamDropdown.value); // On load
 
-// Form submission
 document.getElementById("error-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -102,8 +94,10 @@ document.getElementById("error-form").addEventListener("submit", async function 
     data.submittedBy = user.currentUser.name;
     data.userId = user.currentUser.id;
 
+    const scriptUrl = team === "CE" ? SCRIPT_URL_CE : SCRIPT_URL_RO;
+
     await client.request({
-      url: SCRIPT_URL,
+      url: scriptUrl,
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify(data)
