@@ -38,15 +38,17 @@ const roNames = [
 
 // CE Names
 const ceNames = [
-  "Ishanava Bhadury", "Animesh Mohan", "Kritika Murpana", "Mummidi Mounika", "Bhumika Shinde",
-  "Prakrati Choudhary", "Shubham Kumar Singh", "Simran Shaw", "Amey Sathe", "Jay Sanjay Mogare",
-  "Aishwarya M S", "Amulya Chimaniya", "Parneet Randhawa", "Praseetha Padmanaban", "Saptaparna Chatterjee",
-  "Vanshika Ahuja", "Blesson Paul", "Simrandeep Kaur", "Abhinav Nair", "Aleena John", "Aliya Mehar",
-  "Denzil Dsilva", "Khushi Chopra", "Mallika More", "Manasi Rao", "Monalisa Das", "Nithin Bharath Kumar",
-  "Sameer Bhalerao", "Sathvikesh R", "Abhinav Mishra", "Amanda Liza Dympep", "Banupriya S", "Risalan Shullai",
-  "Alexis Majaw", "Ashpreet Kaur", "Omair Athar Danyal", "Job Mathew", "Nahdha Shakkeer", "Nikita Susan D Cunha",
-  "Sanvi Mishra", "Akash Asija", "Anamika Kumari", "Anisha Maben", "Sahana Bhushan", "Mohit Kumar",
-  "Sahil Kumar", "Sanjana Gurung", "Shreyas G", "Shruti Pandey", "Other (Please inform CE QA Team)"
+  "Abhinav Mishra", "Abhinav Nair", "Aishwarya M S", "Akash Asija", "Aleena John",
+  "Alexis Majaw", "Aliya Mehar", "Amanda Liza Dympep", "Amey Sathe", "Amulya Chimaniya",
+  "Anamika Kumari", "Animesh Mohan", "Anisha Maben", "Ashpreet Kaur", "Banupriya S",
+  "Bhumika Shinde", "Blesson Paul", "Denzil Dsilva", "Ishanava Bhadury", "Jay Sanjay Mogare",
+  "Job Mathew", "Kritika Murpana", "Khushi Chopra", "Mallika More", "Manasi Rao",
+  "Mummidi Mounika", "Mohit Kumar", "Monalisa Das", "Nahdha Shakkeer", "Nikita Susan D Cunha",
+  "Nithin Bharath Kumar", "Omair Athar Danyal", "Parneet Randhawa", "Prakrati Choudhary",
+  "Praseetha Padmanaban", "Risalan Shullai", "Rohan Thakur", "Sahana Bhushan", "Sahil Kumar",
+  "Sameer Bhalerao", "Sanjana Gurung", "Sanvi Mishra", "Saptaparna Chatterjee", "Sathvikesh R",
+  "Shreyas G", "Shruti Pandey", "Shubham Kumar Singh", "Simran Shaw", "Simrandeep Kaur",
+  "Sohan Lal", "Vanshika Ahuja", "Other (Please inform RO QA Team)"
 ];
 
 function populateDropdown(dropdown, options) {
