@@ -48,7 +48,7 @@ const ceNames = [
   "Praseetha Padmanaban", "Risalan Shullai", "Rohan Thakur", "Sahana Bhushan", "Sahil Kumar",
   "Sameer Bhalerao", "Sanjana Gurung", "Sanvi Mishra", "Saptaparna Chatterjee", "Sathvikesh R",
   "Shreyas G", "Shruti Pandey", "Shubham Kumar Singh", "Simran Shaw", "Simrandeep Kaur",
-  "Sohan Lal", "Vanshika Ahuja", "Other (Please inform RO QA Team)"
+  "Sohan Lal", "Vanshika Ahuja", "Other (Please inform CE QA Team)"
 ];
 
 function populateDropdown(dropdown, options) {
