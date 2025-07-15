@@ -30,7 +30,7 @@ const roNames = [
   "Surabhi Detani", "Ankita Singh", "Sarthak Gedam", "Sarthak Mishra", "Saroj Sapkota",
   "Himanshu Dwivedi", "Poushali Choudhury", "Mudit Somani", "Sujan A B", "Rishabh Saraf",
   "Mohamed Rizwan", "Ashish Kumar", "Sonal Jaiswal", "Charan Shetti", "Stefy Yohannan",
-  "Suvashis Kundu", "Vaishali Bisht", "Nandita Ambwani", "Pranjali Dhongde", "Kriti Singh",
+  "Suvashis Kundu", "Vaishali Bisht", "Nandita Ambwani", "Pranjali Dhongde", "Priya Rangaraj", "Kriti Singh",
   "Akshita Saikia", "Arun Pratap Singh", "Chetan Bhaskar", "Firdous Tabassum", "Govind D",
   "Jyoti Jaiswal", "Sai Vamsi", "Mousumi Maity", "Akshay Chandrahas", "Devyani Parihar",
   "Dharani Dharan", "Madhubalan G", "Monalisa Sharma","Rohan Thakur", "Other (Please inform RO QA Team)"
